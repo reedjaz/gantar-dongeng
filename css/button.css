@@ -402,7 +402,7 @@ button .lucide {
 button.ico-sm .lucide {
 	width: var(--unit-9);
 	height: var(--unit-9);
-	border-radius: var(--unit-6);
+	border-radius: var(--unit-1);
 	top: 0;
 }
 
