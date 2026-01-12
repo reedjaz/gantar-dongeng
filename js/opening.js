@@ -37,7 +37,8 @@ function preloadAssetsWithProgress() {
         if (src.endsWith('.mp3')) {
             return new Promise(resolve => {
                 const audio = new Audio();
-                audio.oncanplaythrough = () => { updateProgress(); resolve(); };
+                // Changed from oncanplaythrough to onloadeddata for faster/more reliable trigger
+                audio.onloadeddata = () => { updateProgress(); resolve(); };
                 audio.onerror = (e) => {
                     console.warn(`Gagal preload audio ${src}`, e);
                     updateProgress();
@@ -68,7 +69,15 @@ function preloadAssetsWithProgress() {
         }
     });
 
-    return Promise.all(promises);
+    // 10 Second Timeout Race
+    const timeoutPromise = new Promise(resolve => {
+        setTimeout(() => {
+            console.warn("Preload timeout (10s), forcing completion...");
+            resolve();
+        }, 10000);
+    });
+
+    return Promise.race([Promise.all(promises), timeoutPromise]);
 }
 
 function startSplashScreenSequence() {
