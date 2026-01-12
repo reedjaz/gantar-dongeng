@@ -326,7 +326,7 @@ html {
 }
 
 .levelbox {
-    padding: var(--unit-10);
+    padding: var(--unit-10) var(--unit-5);
     border-radius: var(--rounded-24);
     background-color: var(--sky-100);
     border: calc(var(--unit-2) + var(--unit-1)) solid var(--sky-300);
@@ -482,6 +482,7 @@ html {
     width: 100%;
     height: 100%;
     opacity: 0.2;
+    margin: var(--unit-10);
 }
 
 .levelbox .levelbox-lock {
