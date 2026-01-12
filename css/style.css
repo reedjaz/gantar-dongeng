@@ -145,6 +145,7 @@ html {
     z-index: 999;
     top: var(--unit-5);
     left: var(--unit-5);
+    touch-action: manipulation;
 }
 
 .scene-bg {
@@ -338,6 +339,7 @@ html {
     align-items: center;
     transition: all var(--transition-medium) ease;
     cursor: pointer;
+    touch-action: manipulation;
 }
 
 .levelbox.locked {
